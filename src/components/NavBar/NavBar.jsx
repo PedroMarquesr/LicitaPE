@@ -42,9 +42,7 @@ export default function NavBar() {
       </Flex>
 
       <Flex display={{ base: "flex", md: "none" }}>
-        <Text color="primary.500" fontSize={"x-large"}>
-          <ImMenu />
-        </Text>
+        <MobileMenu />
       </Flex>
     </Flex>
   );
