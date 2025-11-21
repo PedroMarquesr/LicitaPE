@@ -1,4 +1,4 @@
-import { Text, Image, Link, Flex, Show, Button } from "@chakra-ui/react";
+import { Text, Image, Link, Flex, Button } from "@chakra-ui/react";
 import DesktopMenu from "./components/DesktopMenu.jsx/DesktopMenu";
 import { ImMenu } from "react-icons/im";
 import MobileMenu from "./components/MobileMenu/MobileMenu";
@@ -27,21 +27,21 @@ export default function NavBar() {
           src="./icon-licitape.png"
           w={{ base: 6, sm: 7, md: 8, lg: 10 }}
           alt="Licita.PE"
-        />{" "}
+        />
         <Text
-          fontSize={{ md: "lg", lg: "xl", xl: "2xl" }}
+          fontSize={{ base: "lg", md: "xl", lg: "2xl" }} // Adicionei base
           fontWeight="bold"
           color="primary.700"
         >
           Licita.PE
         </Text>
       </Link>
-      <Flex display={{ base: "none", md: "flex" }}>
+
+      <Flex display={{ base: "none", lg: "flex" }}>
         <DesktopMenu />
-        <MobileMenu />
       </Flex>
 
-      <Flex display={{ base: "flex", md: "none" }}>
+      <Flex display={{ base: "flex", lg: "none" }}>
         <MobileMenu />
       </Flex>
     </Flex>
