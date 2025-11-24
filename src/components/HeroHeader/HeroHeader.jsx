@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import {
   Flex,
@@ -8,22 +8,19 @@ import {
   Button,
   HStack,
   useBreakpointValue,
-} from "@chakra-ui/react";
-import { IoTrendingUpSharp } from "react-icons/io5";
-import { BiTimeFive } from "react-icons/bi";
-import { GrDocumentText } from "react-icons/gr";
-import { motion } from "framer-motion"; // eslint-disable-line no-unused-vars
+} from "@chakra-ui/react"
+import { IoTrendingUpSharp } from "react-icons/io5"
+import { BiTimeFive } from "react-icons/bi"
+import { GrDocumentText } from "react-icons/gr"
+import { motion } from "framer-motion"
 
-// Componente condicional - sem animação no mobile
 const AnimatedContainer = ({ children, delay = 0, animation = "none" }) => {
-  const isMobile = useBreakpointValue({ base: true, md: false });
+  const isMobile = useBreakpointValue({ base: true, md: false })
 
   if (isMobile) {
-    // No mobile: retorna o conteúdo sem animação
-    return <div>{children}</div>;
+    return <div>{children}</div>
   }
 
-  // No desktop: aplica a animação
   switch (animation) {
     case "slideLeft":
       return (
@@ -35,7 +32,7 @@ const AnimatedContainer = ({ children, delay = 0, animation = "none" }) => {
         >
           {children}
         </motion.div>
-      );
+      )
     case "floatUp":
       return (
         <motion.div
@@ -46,7 +43,7 @@ const AnimatedContainer = ({ children, delay = 0, animation = "none" }) => {
         >
           {children}
         </motion.div>
-      );
+      )
     case "scaleIn":
       return (
         <motion.div
@@ -57,11 +54,11 @@ const AnimatedContainer = ({ children, delay = 0, animation = "none" }) => {
         >
           {children}
         </motion.div>
-      );
+      )
     default:
-      return <div>{children}</div>;
+      return <div>{children}</div>
   }
-};
+}
 
 export default function HeroHeader() {
   return (
@@ -74,7 +71,6 @@ export default function HeroHeader() {
       position="relative"
       overflow="hidden"
     >
-      {/* Efeito de brilho sutil */}
       <Box
         position="absolute"
         top="-50%"
@@ -96,7 +92,6 @@ export default function HeroHeader() {
         flexDir={{ base: "column", lg: "row" }}
         gap={{ base: 8, lg: 16 }}
       >
-        {/* Lado Esquerdo - Texto */}
         <AnimatedContainer animation="slideLeft">
           <VStack
             flex="1"
@@ -146,7 +141,6 @@ export default function HeroHeader() {
         <AnimatedContainer animation="floatUp" delay={0.3}>
           <Box display={{ base: "none", lg: "block" }} flex="1" maxW="500px">
             <VStack spacing={6} align="stretch">
-              {/* Card Principal */}
               <AnimatedContainer animation="scaleIn" delay={0.5}>
                 <Box
                   bg="white"
@@ -197,7 +191,6 @@ export default function HeroHeader() {
                 </Box>
               </AnimatedContainer>
 
-              {/* Cards de Benefícios */}
               <AnimatedContainer animation="floatUp" delay={0.7}>
                 <HStack spacing={4} align="stretch">
                   <Box
@@ -268,5 +261,5 @@ export default function HeroHeader() {
         </AnimatedContainer>
       </Flex>
     </Box>
-  );
+  )
 }

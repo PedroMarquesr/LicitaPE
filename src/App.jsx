@@ -2,12 +2,12 @@
 
 import HeroHeader from "./components/HeroHeader/HeroHeader";
 import NavBar from "./components/NavBar/NavBar";
-import { Text } from "@chakra-ui/react";
+import FeatureSection from "./components/FeaturesSection/FeaturesSection";
 
 function App() {
   return (
     <>
-      <NavBar /> <HeroHeader />
+      <NavBar /> <HeroHeader /> <FeatureSection/>
     </>
   );
 }
