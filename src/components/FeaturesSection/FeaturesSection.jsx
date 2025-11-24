@@ -45,7 +45,11 @@ export default function FeatureSection() {
 
         <Flex flexDir={"column"} alignItems={"center"}>
           <Flex>
-            <Text color={"#0b3c5d"} fontWeight={"bold"} fontSize={"xxx-large"}>
+            <Text
+              color={"#0b3c5d"}
+              fontWeight={"bold"}
+              fontSize={{ base: "2xl", md: "3xl", lg: "4xl" }}
+            >
               {" "}
               Tudo que você precisa em uma única plataforma
             </Text>
@@ -58,7 +62,7 @@ export default function FeatureSection() {
             </Text>
           </Flex>
           <Flex flexDir={"column"} gap={"1"}>
-            <Flex>
+            <Flex flexDir={{ base: "column", md: "row" }} align={"center"}>
               <FeatureCard
                 cardIcon={<FiFilePlus />}
                 cardTitle={"Cadastro de Licitações"}
@@ -81,7 +85,8 @@ export default function FeatureSection() {
                 }
               />
             </Flex>
-            <Flex>
+            <Flex flexDir={{ base: "column", md: "row" }} align={"center"}>
+              {" "}
               <FeatureCard
                 cardIcon={<FaFileSignature />}
                 cardTitle={"Gerador de Propostas"}

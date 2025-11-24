@@ -19,6 +19,7 @@ export default function FeatureCard({ cardTitle, cardSubTitle, cardIcon }) {
           transform: "scale(1.05)",
           backgroundColor: "#dbeafe",
         }}
+        maxW={{ base: "450px" }}
       >
         <Flex p={"3"}>
           <Text
@@ -26,7 +27,7 @@ export default function FeatureCard({ cardTitle, cardSubTitle, cardIcon }) {
             color="white"
             p={3}
             borderRadius="xl"
-            fontSize="2xl"
+            fontSize={{ base: "2xl", md: "3xl", lg: "4xl" }}
             align="center"
             justify="center"
           >
