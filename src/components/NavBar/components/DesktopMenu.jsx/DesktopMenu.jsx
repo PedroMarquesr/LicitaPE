@@ -1,6 +1,7 @@
-"use client";
+"use client"
 
-import { Flex, Button, Link } from "@chakra-ui/react";
+import { Flex, Button, Link } from "@chakra-ui/react"
+import { Link as RouterLink } from "react-router-dom"
 
 export default function DesktopMenu() {
   return (
@@ -13,17 +14,19 @@ export default function DesktopMenu() {
           Sobre
         </Link>
       </Flex>
-      <Button
-        fontWeight={"bold"}
-        transition="all 0.2s ease-in-out"
-        _hover={{
-          transform: "translateY(-2px)",
-          textDecoration: "none",
-          bgColor: "primary.500",
-        }}
-      >
-        Login
-      </Button>
+      <RouterLink to={"/login"}>
+        <Button
+          fontWeight={"bold"}
+          transition="all 0.2s ease-in-out"
+          _hover={{
+            transform: "translateY(-2px)",
+            textDecoration: "none",
+            bgColor: "primary.500",
+          }}
+        >
+          Login
+        </Button>
+      </RouterLink>
     </>
-  );
+  )
 }

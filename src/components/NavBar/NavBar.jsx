@@ -29,7 +29,6 @@ export default function NavBar() {
           alt="Licita.PE"
         />
         <Text
-          fontSize={{ base: "lg", md: "xl", lg: "2xl" }} // Adicionei base
           fontWeight="bold"
           color="primary.700"
         >

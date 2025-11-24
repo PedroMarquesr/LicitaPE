@@ -21,7 +21,7 @@ export default function FeatureCard({ cardTitle, cardSubTitle, cardIcon }) {
         }}
         maxW={{ base: "450px" }}
       >
-        <Flex p={"3"}>
+        <Flex p={"2"}>
           <Text
             bg="linear-gradient(135deg, #0b3d5e 0%, #016dc3 50%, #349e70 100%)"
             color="white"
@@ -34,10 +34,10 @@ export default function FeatureCard({ cardTitle, cardSubTitle, cardIcon }) {
             {cardIcon}
           </Text>
         </Flex>
-        <Text p={"2"} color={"#0b3c5d"} fontWeight={"bold"}>
+        <Text p={"1"} color={"#0b3c5d"} fontWeight={"bold"}>
           {cardTitle}
         </Text>
-        <Text p={"2"} color="gray.700" fontStyle={"italic"}>
+        <Text p={"1"} color="gray.700" fontStyle={"italic"}>
           {cardSubTitle}
         </Text>
       </Flex>
