@@ -9,9 +9,8 @@ import useStore from "@/components/globalStates/store"
 import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore"
 
 export default function BtnGoogle() {
-  // ← Corrigi o nome para BtnGoogle
   const auth = getAuth(app)
-  const navigate = useNavigate() // ← MUDANÇA AQUI
+  const navigate = useNavigate()
   const getUser = useStore((state) => state.getUser)
 
   async function loginGoogle() {
@@ -25,7 +24,7 @@ export default function BtnGoogle() {
         console.log(result)
         console.log(`Objeto recebido no login`, user)
         getUser()
-        navigate("/") // ← MUDANÇA AQUI
+        navigate("/dashboard")
       })
       .catch((error) => {
         const errorCode = error.code
