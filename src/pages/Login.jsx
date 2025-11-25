@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Flex,
@@ -9,54 +9,50 @@ import {
   Icon,
   Field,
   Input,
-} from "@chakra-ui/react"
+} from "@chakra-ui/react";
 
-import NavBar from "@/components/NavBar/NavBar"
-import BtnGogle from "@/components/BtnGoogle/BtnGoogle"
+import NavBar from "@/components/NavBar/NavBar";
+import BtnGogle from "@/components/BtnGoogle/BtnGoogle";
 
-import { db } from "@/components/libs/firebaseinit"
-import { Global } from "@emotion/react"
-import useStore from "@/components/globalStates/store"
+import { db } from "@/components/libs/firebaseinit";
+import useStore from "@/components/globalStates/store";
 
-import { useEffect } from "react"
+import { useEffect } from "react";
 
-import { doc, setDoc, getDoc } from "firebase/firestore"
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
-import { FcGoogle } from "react-icons/fc"
-import { CiMail } from "react-icons/ci"
-import { PiPassword } from "react-icons/pi"
+import { CiMail } from "react-icons/ci";
+import { PiPassword } from "react-icons/pi";
 
 export default function Login() {
-  const { user } = useStore()
-
-  const createUser = async () => {
-    try {
-      const userRef = doc(db, "users", user.uid)
-      const userSnap = await getDoc(userRef)
-      if (!userSnap.exists()) {
-        await setDoc(userRef, {
-          uid: user.uid,
-          name: user.displayName,
-          email: user.email,
-          photoURL: user.photoURL,
-        })
-        console.log("User document created")
-      }
-    } catch (error) {
-      console.log("error")
-    }
-  }
+  const { user } = useStore();
 
   useEffect(() => {
+    const createUser = async () => {
+      try {
+        const userRef = doc(db, "users", user.uid);
+        const userSnap = await getDoc(userRef);
+        if (!userSnap.exists()) {
+          await setDoc(userRef, {
+            uid: user.uid,
+            name: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL,
+          });
+          console.log("User document created");
+        }
+      } catch (error) {
+        console.error("error");
+      }
+    };
+
     if (user && user.uid) {
-      createUser()
+      createUser();
     }
-  }, [user])
+  }, [user]);
 
   return (
     <>
-      {/* {user.uid && <Text>Usuario conectado</Text>} */}
-
       <NavBar />
       <Flex
         bgColor="gray.100"
@@ -215,5 +211,5 @@ export default function Login() {
         </Flex>
       </Flex>
     </>
-  )
+  );
 }

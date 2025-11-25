@@ -1,11 +1,11 @@
-"use client"
-import { Box, Flex, Text, Icon, Button } from "@chakra-ui/react"
-import { FaPills, FaPhone } from "react-icons/fa"
-import { IoPersonAddSharp, IoLogOutSharp } from "react-icons/io5"
-import useStore from "@/components/globalStates/store"
+"use client";
+import { Box, Flex, Text, Icon, Button } from "@chakra-ui/react";
+import { FaPills, FaPhone } from "react-icons/fa";
+import { IoPersonAddSharp, IoLogOutSharp } from "react-icons/io5";
+import useStore from "@/components/globalStates/store";
 
 export default function Sidebar() {
-  const { user, signOutUser } = useStore()
+  const { user, signOutUser } = useStore();
 
   const menuItems = [
     {
@@ -16,9 +16,9 @@ export default function Sidebar() {
     {
       icon: FaPills,
       label: "Cadastro de licitação",
-      link: "/dashboard/inventory/registration",
+      link: "/dashboard/AddTenderForm",
     },
-  ]
+  ];
   return (
     <>
       {user?.uid && (
@@ -69,5 +69,5 @@ export default function Sidebar() {
         </Box>
       )}
     </>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Flex,
@@ -8,17 +8,17 @@ import {
   Button,
   HStack,
   useBreakpointValue,
-} from "@chakra-ui/react"
-import { IoTrendingUpSharp } from "react-icons/io5"
-import { BiTimeFive } from "react-icons/bi"
-import { GrDocumentText } from "react-icons/gr"
-import { motion } from "framer-motion"
+} from "@chakra-ui/react";
+import { IoTrendingUpSharp } from "react-icons/io5";
+import { BiTimeFive } from "react-icons/bi";
+import { GrDocumentText } from "react-icons/gr";
+import { motion } from "framer-motion";
 
 const AnimatedContainer = ({ children, delay = 0, animation = "none" }) => {
-  const isMobile = useBreakpointValue({ base: true, md: false })
+  const isMobile = useBreakpointValue({ base: true, md: false });
 
   if (isMobile) {
-    return <div>{children}</div>
+    return <div>{children}</div>;
   }
 
   switch (animation) {
@@ -32,7 +32,7 @@ const AnimatedContainer = ({ children, delay = 0, animation = "none" }) => {
         >
           {children}
         </motion.div>
-      )
+      );
     case "floatUp":
       return (
         <motion.div
@@ -43,7 +43,7 @@ const AnimatedContainer = ({ children, delay = 0, animation = "none" }) => {
         >
           {children}
         </motion.div>
-      )
+      );
     case "scaleIn":
       return (
         <motion.div
@@ -54,15 +54,14 @@ const AnimatedContainer = ({ children, delay = 0, animation = "none" }) => {
         >
           {children}
         </motion.div>
-      )
+      );
     default:
-      return <div>{children}</div>
+      return <div>{children}</div>;
   }
-}
+};
 
 export default function HeroHeader() {
   return (
-    
     <Box
       bg="linear-gradient(135deg, #0b3d5e 0%, #016dc3 50%, #349e70 100%)"
       mx={{ base: "0", md: "5%", lg: "10%" }}
@@ -252,7 +251,6 @@ export default function HeroHeader() {
                       <Text fontSize="sm" fontWeight="medium" color="gray.700">
                         Mais rapidez
                       </Text>
-                      
                     </HStack>
                   </Box>
                 </HStack>
@@ -262,5 +260,5 @@ export default function HeroHeader() {
         </AnimatedContainer>
       </Flex>
     </Box>
-  )
+  );
 }
