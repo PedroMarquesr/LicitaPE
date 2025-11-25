@@ -26,9 +26,10 @@ const useStore = create(
   persist((set, get) => ({
     user: null,
     setUser: (user) => set({ user }),
+
     getUser: () => getUser(set),
     signOutUser: () => signOutUser(set),
   }))
 )
 
-export default useStore;
+export default useStore

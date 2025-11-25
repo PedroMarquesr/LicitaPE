@@ -10,14 +10,53 @@ import {
   Field,
   Input,
 } from "@chakra-ui/react"
+
 import NavBar from "@/components/NavBar/NavBar"
+import BtnGogle from "@/components/BtnGoogle/BtnGoogle"
+
+import { db } from "@/components/libs/firebaseinit"
+import { Global } from "@emotion/react"
+import useStore from "@/components/globalStates/store"
+
+import { useEffect } from "react"
+
+import { doc, setDoc, getDoc } from "firebase/firestore"
+
 import { FcGoogle } from "react-icons/fc"
 import { CiMail } from "react-icons/ci"
 import { PiPassword } from "react-icons/pi"
 
 export default function Login() {
+  const { user } = useStore()
+
+  const createUser = async () => {
+    try {
+      const userRef = doc(db, "users", user.uid)
+      const userSnap = await getDoc(userRef)
+      if (!userSnap.exists()) {
+        await setDoc(userRef, {
+          uid: user.uid,
+          name: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+        })
+        console.log("User document created")
+      }
+    } catch (error) {
+      console.log("error")
+    }
+  }
+
+  useEffect(() => {
+    if (user && user.uid) {
+      createUser()
+    }
+  }, [user])
+
   return (
     <>
+      {/* {user.uid && <Text>Usuario conectado</Text>} */}
+
       <NavBar />
       <Flex
         bgColor="gray.100"
@@ -58,24 +97,7 @@ export default function Login() {
         </Flex>
 
         <Flex w={{ base: "100%", md: "auto" }} justify="center">
-          <Button
-            w={{ base: "100%", md: "300px" }}
-            bgColor="gray.50"
-            _hover={{
-              backgroundColor: "gray.200",
-              borderColor: "gray.500",
-            }}
-            p={{ base: "4", md: "7" }}
-            border={"1px solid"}
-            borderColor="gray.200"
-          >
-            <Icon size={{ base: "xl", md: "2xl" }}>
-              <FcGoogle />
-            </Icon>
-            <Text color="gray.800" fontSize={{ base: "sm", md: "md" }} ml={2}>
-              Continue com Google
-            </Text>
-          </Button>
+          <BtnGogle />
         </Flex>
 
         <Flex
