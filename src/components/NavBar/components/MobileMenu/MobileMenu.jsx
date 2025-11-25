@@ -14,7 +14,14 @@ import {
 import { ImMenu } from "react-icons/im";
 import { useState } from "react";
 
+import { Link as RouterLink } from "react-router-dom";
+
+import { useLocation } from "react-router-dom";
+
 export default function MobileMenu() {
+  const location = useLocation();
+  const currentName = location.pathname;
+
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -58,19 +65,21 @@ export default function MobileMenu() {
 
                 <Drawer.Body py={6}>
                   <VStack spacing={0} align="stretch">
-                    <Link
-                      fontSize="lg"
-                      p={3}
-                      color="gray.700"
-                      _hover={{
-                        bg: "primary.50",
-                        color: "primary.600",
-                        textDecoration: "none",
-                      }}
-                      transition="all 0.2s"
-                    >
-                      Login
-                    </Link>
+                    <RouterLink to={currentName === "/login" ? "/" : "/login"}>
+                      <Link
+                        fontSize="lg"
+                        p={3}
+                        color="gray.700"
+                        _hover={{
+                          bg: "primary.50",
+                          color: "primary.600",
+                          textDecoration: "none",
+                        }}
+                        transition="all 0.2s"
+                      >
+                        {currentName === "/login" ? "Voltar" : "Login"}
+                      </Link>
+                    </RouterLink>
                     <Separator />
 
                     <Link

@@ -1,9 +1,13 @@
-"use client"
+"use client";
 
-import { Flex, Button, Link } from "@chakra-ui/react"
-import { Link as RouterLink } from "react-router-dom"
+import { Flex, Button, Link } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export default function DesktopMenu() {
+  const location = useLocation();
+  const currentPath = location.pathname;
+
   return (
     <>
       <Flex>
@@ -14,7 +18,7 @@ export default function DesktopMenu() {
           Sobre
         </Link>
       </Flex>
-      <RouterLink to={"/login"}>
+      <RouterLink to={currentPath === "/login" ? "/" : "/login"}>
         <Button
           fontWeight={"bold"}
           transition="all 0.2s ease-in-out"
@@ -24,9 +28,9 @@ export default function DesktopMenu() {
             bgColor: "primary.500",
           }}
         >
-          Login
+          {currentPath === "/login" ? "Voltar" : "Login"}
         </Button>
       </RouterLink>
     </>
-  )
+  );
 }

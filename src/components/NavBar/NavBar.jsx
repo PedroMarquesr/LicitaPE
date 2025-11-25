@@ -2,6 +2,7 @@ import { Text, Image, Link, Flex, Button } from "@chakra-ui/react";
 import DesktopMenu from "./components/DesktopMenu.jsx/DesktopMenu";
 import { ImMenu } from "react-icons/im";
 import MobileMenu from "./components/MobileMenu/MobileMenu";
+import { NavLink } from "react-router";
 
 export default function NavBar() {
   return (
@@ -28,10 +29,7 @@ export default function NavBar() {
           w={{ base: 6, sm: 7, md: 8, lg: 10 }}
           alt="Licita.PE"
         />
-        <Text
-          fontWeight="bold"
-          color="primary.700"
-        >
+        <Text fontWeight="bold" color="primary.700">
           Licita.PE
         </Text>
       </Link>
