@@ -4,34 +4,40 @@ import {
   Flex,
   Button,
   Text,
-  Link,
   Portal,
   Drawer,
   CloseButton,
   Separator,
   VStack,
 } from "@chakra-ui/react"
-import { ImMenu } from "react-icons/im"
 import { useState } from "react"
-
 import { Link as RouterLink } from "react-router-dom"
 
 import { useLocation } from "react-router-dom"
 
-export default function MobileMenu() {
+export default function MenuDashboardMb() {
   const location = useLocation()
   const currentName = location.pathname
 
   const [isOpen, setIsOpen] = useState(false)
 
+  const menuItems = [
+    {
+      icon: "",
+      lavel: "Dashboard",
+      link: "/dashboard",
+    },
+    {
+      icon: "",
+      label: "Cadastro de licitação",
+      link: "/dashboard/AddTenderForm",
+    },
+  ]
+
   return (
     <>
-      <Flex width={"100%"} mr={"0"} justify={"right"}>
-        <Drawer.Root
-          open={isOpen}
-          onOpenChange={(e) => setIsOpen(e.open)}
-          position={"relative"}
-        >
+      <Flex>
+        <Drawer.Root open={isOpen} onOpenChange={(e) => setIsOpen(e.open)}>
           <Drawer.Trigger asChild>
             <Button
               onClick={() => setIsOpen((prev) => !prev)}
@@ -66,11 +72,28 @@ export default function MobileMenu() {
                     Menu
                   </Drawer.Title>
                 </Drawer.Header>
-
                 <Drawer.Body py={6}>
-                  <VStack spacing={0} align="stretch">
+                  <VStack spacing={6} align="stretch">
                     <RouterLink to={currentName === "/login" ? "/" : "/login"}>
-                      <Link
+                      {menuItems.map((item, index) => (
+                        <Flex
+                          key={index}
+                          as="a"
+                          href={item.link}
+                          align="center"
+                          p="3"
+                          _hover={{ bg: "gray.700" }}
+                        >
+                          <Icon
+                            as={item.icon}
+                            boxSize="5"
+                            mr="5"
+                            alignItems={"center"}
+                          />
+                          <Text whiteSpace="nowrap">{item.label}</Text>
+                        </Flex>
+                      ))}
+                      {/* <Link
                         fontSize="lg"
                         p={3}
                         color="gray.700"
@@ -82,10 +105,8 @@ export default function MobileMenu() {
                         transition="all 0.2s"
                       >
                         {currentName === "/login" ? "Voltar" : "Login"}
-                      </Link>
+                      </Link> */}
                     </RouterLink>
-                    <Separator />
-
                     <Link
                       fontSize="lg"
                       p={3}
@@ -100,7 +121,6 @@ export default function MobileMenu() {
                       Recursos
                     </Link>
                     <Separator />
-
                     <Link
                       fontSize="lg"
                       p={3}
@@ -117,7 +137,6 @@ export default function MobileMenu() {
                     <Separator />
                   </VStack>
                 </Drawer.Body>
-
                 <Drawer.CloseTrigger asChild>
                   <CloseButton
                     size="md"
