@@ -6,8 +6,8 @@ import { Outlet } from "react-router-dom"
 import { Flex, Text } from "@chakra-ui/react"
 
 import Sidebar from "./components/Sidebar/Sidebar"
-import MobileMenu from "@/components/NavBar/components/MobileMenu/MobileMenu"
 import useStore from "@/components/globalStates/store"
+import MenuDashboardMb from "./components/MenuDashboardMb/MenuDashboardMb"
 
 export default function Dashboard() {
   const { user } = useStore()
@@ -33,7 +33,7 @@ export default function Dashboard() {
         <Sidebar />
       </Flex>
       <Flex display={{ base: "flex", lg: "none" }}>
-        <MobileMenu />
+        <MenuDashboardMb />
       </Flex>
       <Flex pl={{ base: "0", md: "45px" }}>
         <Text>teste</Text>

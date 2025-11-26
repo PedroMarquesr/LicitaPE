@@ -5,6 +5,7 @@ import {
   Button,
   Text,
   Portal,
+  Icon,
   Drawer,
   CloseButton,
   Separator,
@@ -15,6 +16,11 @@ import { Link as RouterLink } from "react-router-dom"
 
 import { useLocation } from "react-router-dom"
 
+import { IoLogOutSharp } from "react-icons/io5"
+import { MdDashboard } from "react-icons/md"
+import { FaPlus } from "react-icons/fa"
+import { ImMenu } from "react-icons/im"
+
 export default function MenuDashboardMb() {
   const location = useLocation()
   const currentName = location.pathname
@@ -23,12 +29,12 @@ export default function MenuDashboardMb() {
 
   const menuItems = [
     {
-      icon: "",
-      lavel: "Dashboard",
+      icon: MdDashboard,
+      label: "Dashboard",
       link: "/dashboard",
     },
     {
-      icon: "",
+      icon: FaPlus,
       label: "Cadastro de licitação",
       link: "/dashboard/AddTenderForm",
     },
@@ -74,66 +80,22 @@ export default function MenuDashboardMb() {
                 </Drawer.Header>
                 <Drawer.Body py={6}>
                   <VStack spacing={6} align="stretch">
-                    <RouterLink to={currentName === "/login" ? "/" : "/login"}>
-                      {menuItems.map((item, index) => (
-                        <Flex
-                          key={index}
-                          as="a"
-                          href={item.link}
-                          align="center"
-                          p="3"
-                          _hover={{ bg: "gray.700" }}
-                        >
-                          <Icon
-                            as={item.icon}
-                            boxSize="5"
-                            mr="5"
-                            alignItems={"center"}
-                          />
-                          <Text whiteSpace="nowrap">{item.label}</Text>
-                        </Flex>
-                      ))}
-                      {/* <Link
-                        fontSize="lg"
-                        p={3}
-                        color="gray.700"
-                        _hover={{
-                          bg: "primary.50",
-                          color: "primary.600",
+                    {menuItems.map((item, index) => (
+                      <RouterLink // 👈 MUDEI Router.Link para RouterLink
+                        key={index}
+                        to={item.link} // 👈 MUDEI href para to
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          padding: "12px",
                           textDecoration: "none",
+                          color: "inherit",
                         }}
-                        transition="all 0.2s"
                       >
-                        {currentName === "/login" ? "Voltar" : "Login"}
-                      </Link> */}
-                    </RouterLink>
-                    <Link
-                      fontSize="lg"
-                      p={3}
-                      color="gray.700"
-                      _hover={{
-                        bg: "primary.50",
-                        color: "primary.600",
-                        textDecoration: "none",
-                      }}
-                      transition="all 0.2s"
-                    >
-                      Recursos
-                    </Link>
-                    <Separator />
-                    <Link
-                      fontSize="lg"
-                      p={3}
-                      color="gray.700"
-                      _hover={{
-                        bg: "primary.50",
-                        color: "primary.600",
-                        textDecoration: "none",
-                      }}
-                      transition="all 0.2s"
-                    >
-                      Sobre
-                    </Link>
+                        <Icon as={item.icon} boxSize="5" mr="5" />
+                        <Text whiteSpace="nowrap">{item.label}</Text>
+                      </RouterLink>
+                    ))}
                     <Separator />
                   </VStack>
                 </Drawer.Body>
