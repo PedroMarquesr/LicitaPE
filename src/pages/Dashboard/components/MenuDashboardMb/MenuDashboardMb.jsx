@@ -16,14 +16,13 @@ import { Link as RouterLink } from "react-router-dom"
 
 import { useLocation } from "react-router-dom"
 
-import { IoLogOutSharp } from "react-icons/io5"
 import { MdDashboard } from "react-icons/md"
 import { FaPlus } from "react-icons/fa"
 import { ImMenu } from "react-icons/im"
 
 export default function MenuDashboardMb() {
   const location = useLocation()
-  const currentName = location.pathname
+  // const { user, signOutUser } = useState()
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -42,7 +41,8 @@ export default function MenuDashboardMb() {
 
   return (
     <>
-      <Flex>
+      {/* {user?.uid && ( */}
+      <Flex w={"100%"} justify={"right"}>
         <Drawer.Root open={isOpen} onOpenChange={(e) => setIsOpen(e.open)}>
           <Drawer.Trigger asChild>
             <Button

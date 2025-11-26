@@ -35,8 +35,7 @@ export default function Dashboard() {
       <Flex display={{ base: "flex", lg: "none" }}>
         <MenuDashboardMb />
       </Flex>
-      <Flex pl={{ base: "0", md: "45px" }}>
-        <Text>teste</Text>
+      <Flex pl={{ base: "1", md: "45px" }}>
         <Outlet />
       </Flex>
     </>
