@@ -36,7 +36,6 @@ export default function MenuForm({ activeStep, onStepChange }) {
           <Button
             key={step.id}
             mr={"2"}
-            // 🎨 Muda cor conforme step ativo
             bgColor={activeStep === step.id ? "blue.500" : "gray.200"}
             color={activeStep === step.id ? "white" : "blackAlpha.700"}
             gap={"1"}
@@ -65,8 +64,8 @@ export default function MenuForm({ activeStep, onStepChange }) {
               bgColor={activeStep === step.id ? "blue.500" : "gray.200"}
               color={activeStep === step.id ? "white" : "blackAlpha.700"}
               gap={"1"}
-              // h={"8"}
               size="xl"
+              onClick={() => handleStepClick(step.id)}
             >
               <Flex align="center">
                 <Icon color="blackAlpha.700" as={step.icon} />
