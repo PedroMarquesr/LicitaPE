@@ -4,7 +4,18 @@ import { Flex } from "@chakra-ui/react"
 import HeaderPage from "../HeaderPage/HeaderPage"
 import BiddingWizard from "./BiddingWizard/BiddingWizard"
 
+import { useState } from "react"
+
 export default function AddTenderFormFixed() {
+  const [biddingData, setBiddingData] = useState({
+    responsibleAgency: "",
+    biddingObject: "",
+    identificationNumber: "",
+    processNumber: "",
+    modality: "", // Valores: "Aberto", "Aberto/Fechado", "Fechado/Aberto", "Fechado"
+    judgmentCriteria: "", // Valores: "Menor preço, Maior desconto, Técnica e preço, Maior lance, Melhor técnica"
+    biddingType: "", // "Dispensa de Licitação, Pregão eletronico, Convite eletrônico, Concorrência, Tomada de Preços, Inexigibilidade"
+  })
   return (
     <Flex
       flexDir="column"
@@ -20,8 +31,12 @@ export default function AddTenderFormFixed() {
         subTitleHeader={"Preencha os dados para cadastrar uma nova licitação"}
       />
       <Flex w="100%" justify="center">
-        <BiddingWizard />
+        <BiddingWizard
+          biddingData={biddingData}
+          setBiddingData={setBiddingData}
+        />
       </Flex>
+      <Flex>{JSON.stringify(biddingData, null, 2)}</Flex>
     </Flex>
   )
 }

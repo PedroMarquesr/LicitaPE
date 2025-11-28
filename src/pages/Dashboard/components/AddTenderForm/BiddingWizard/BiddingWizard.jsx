@@ -5,7 +5,7 @@ import MenuForm from "./components/MenuForm/MenuForm"
 import IdentificationStep from "./components/steps/IdentificationStep/IdentificationStep"
 import { useState } from "react"
 
-export default function BiddingWizard() {
+export default function BiddingWizard({ biddingData, setBiddingData }) {
   const [activeStep, setActiveStep] = useState(1)
 
   const handleStepChange = (stepId) => {
@@ -16,7 +16,14 @@ export default function BiddingWizard() {
   const renderStepContent = () => {
     switch (activeStep) {
       case 1:
-        return <IdentificationStep />
+        return (
+          <>
+            <IdentificationStep
+              biddingData={biddingData}
+              setBiddingData={setBiddingData}
+            />
+          </>
+        )
       case 2:
         return <Text>Step 2</Text>
       case 3:

@@ -44,7 +44,7 @@ export default function Dashboard() {
             top={0}
             zIndex={10}
           >
-            <MenuDashboardMb />
+            <MenuDashboardMb  />
           </Flex>
         </Flex>
       </Flex>
