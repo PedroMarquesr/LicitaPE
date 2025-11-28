@@ -22,7 +22,6 @@ import { ImMenu } from "react-icons/im"
 
 export default function MenuDashboardMb() {
   const location = useLocation()
-  // const { user, signOutUser } = useState()
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -41,7 +40,6 @@ export default function MenuDashboardMb() {
 
   return (
     <>
-      {/* {user?.uid && ( */}
       <Flex w={"100%"} justify={"right"}>
         <Drawer.Root open={isOpen} onOpenChange={(e) => setIsOpen(e.open)}>
           <Drawer.Trigger asChild>
@@ -81,9 +79,9 @@ export default function MenuDashboardMb() {
                 <Drawer.Body py={6}>
                   <VStack spacing={6} align="stretch">
                     {menuItems.map((item, index) => (
-                      <RouterLink // 👈 MUDEI Router.Link para RouterLink
+                      <RouterLink
                         key={index}
-                        to={item.link} // 👈 MUDEI href para to
+                        to={item.link}
                         style={{
                           display: "flex",
                           alignItems: "center",

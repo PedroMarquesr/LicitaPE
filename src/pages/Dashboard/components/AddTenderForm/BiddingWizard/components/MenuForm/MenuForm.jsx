@@ -28,7 +28,7 @@ export default function MenuForm({ activeStep, onStepChange }) {
     <>
       <Flex
         justify={"center"}
-        w={"100%"}
+        w={"100vw"}
         display={{ base: "none", md: "flex" }}
       >
         {steps.map((step) => (

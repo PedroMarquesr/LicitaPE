@@ -21,7 +21,7 @@ export default function Dashboard() {
 
   if (!user?.uid) {
     return (
-      <Flex justify="center" align="center" h="100vh">
+      <Flex justify="center" align="center" h="100%">
         <Text>Carregando...</Text>
       </Flex>
     )
@@ -29,14 +29,24 @@ export default function Dashboard() {
 
   return (
     <>
-      <Flex display={{ base: "none", lg: "flex" }}>
-        <Sidebar />
-      </Flex>
-      <Flex display={{ base: "flex", lg: "none" }}>
-        <MenuDashboardMb />
-      </Flex>
-      <Flex pl={{ base: "1", md: "45px" }}>
-        <Outlet />
+      <Flex w={"100%"} position="relative">
+        {" "}
+        <Flex display={{ base: "none", lg: "flex" }}>
+          <Sidebar />
+        </Flex>
+        <Flex flex={1} pl={{ base: "0", md: "45px" }} position="relative">
+          <Outlet />
+
+          <Flex
+            display={{ base: "flex", lg: "none" }}
+            position="absolute"
+            right={0}
+            top={0}
+            zIndex={10}
+          >
+            <MenuDashboardMb />
+          </Flex>
+        </Flex>
       </Flex>
     </>
   )

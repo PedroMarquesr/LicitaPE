@@ -1,14 +1,11 @@
 "use client"
 
 import { Flex, Text } from "@chakra-ui/react"
-import { Children } from "react"
-
 import MenuForm from "./components/MenuForm/MenuForm"
 import IdentificationStep from "./components/steps/IdentificationStep/IdentificationStep"
-
 import { useState } from "react"
 
-export default function BiddingWizard({ Children }) {
+export default function BiddingWizard() {
   const [activeStep, setActiveStep] = useState(1)
 
   const handleStepChange = (stepId) => {
@@ -28,24 +25,30 @@ export default function BiddingWizard({ Children }) {
         return <Text>Step 4</Text>
       case 5:
         return <Text>Step 5</Text>
+      default:
+        return <IdentificationStep />
     }
   }
 
   return (
     <Flex
-      border={"1px solid "}
+      border="1px solid"
       borderRadius="20px"
       borderColor="gray.300"
-      h={"100%"}
-      w={"100%"}
-      p={"3%"}
-      mt={"3%"}
-      boxShadow={"2xl"}
+      h="100vh"
+      minH="600px"
+      w="100%"
+      maxW="1200px"
+      p={{ base: "3%", md: "4%" }}
+      mt="3%"
+      mb="3%"
+      boxShadow="2xl"
       flexDirection="column"
       gap={4}
+      align={"center"}
     >
       <MenuForm activeStep={activeStep} onStepChange={handleStepChange} />
-      <Flex flex={1} align={"center"} w={"100vw"}>
+      <Flex flex={1} justify="center" w="100%">
         {renderStepContent()}
       </Flex>
     </Flex>
