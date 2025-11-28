@@ -14,10 +14,9 @@ export default function MenuForm({ activeStep, onStepChange }) {
   const steps = [
     { id: 1, title: "Identificação", icon: GrCircleInformation },
     { id: 2, title: "Datas e Prazos", icon: CiCalendarDate },
-    { id: 3, title: "Julgamento", icon: ImHammer2 },
-    { id: 4, title: "Local e Plataforma", icon: RiGlobalFill },
-    { id: 5, title: "Documentação", icon: IoDocumentTextOutline },
-    { id: 6, title: "Complementar", icon: CiCirclePlus },
+    { id: 3, title: "Local e Plataforma", icon: RiGlobalFill },
+    { id: 4, title: "Documentação", icon: IoDocumentTextOutline },
+    { id: 5, title: "Complementar", icon: CiCirclePlus },
   ]
 
   const handleStepClick = (stepId) => {
