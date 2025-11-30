@@ -27,6 +27,17 @@ export default function AddTenderFormFixed() {
 
     disputePortal: "",
     executionLocation: "",
+
+    tags: [],
+
+    contactPhone: "",
+    contactEmail: "",
+    technicalResponsible: "",
+    biddingNoticeUrl: "",
+    attachmentsUrl: "",
+    estimatedValue: "",
+    maximumValue: "",
+    observations: "",
   });
   return (
     <Flex

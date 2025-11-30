@@ -6,6 +6,7 @@ import MenuForm from "./components/MenuForm/MenuForm";
 import IdentificationStep from "./components/steps/IdentificationStep/IdentificationStep";
 import DatesStep from "./components/steps/DatesStep/DatesStep";
 import LocalStep from "./components/steps/LocalStep/LocalStep";
+import ComplementaryStep from "./components/steps/ComplementaryStep/ComplementaryStep";
 
 import { useState } from "react";
 
@@ -45,7 +46,12 @@ export default function BiddingWizard({ biddingData, setBiddingData }) {
       case 4:
         return <Text>Step 4</Text>;
       case 5:
-        return <Text>Step 5</Text>;
+        return (
+          <ComplementaryStep
+            biddingData={biddingData}
+            setBiddingData={setBiddingData}
+          />
+        );
       default:
         return <IdentificationStep />;
     }
