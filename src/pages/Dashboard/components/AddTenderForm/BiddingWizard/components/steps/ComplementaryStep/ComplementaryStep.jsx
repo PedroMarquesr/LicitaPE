@@ -13,7 +13,7 @@ import {
   WrapItem,
   IconButton,
 } from "@chakra-ui/react";
-import { IoCloseCircle } from "react-icons/io5";
+import { IoCloseCircle, IoCloseOutline } from "react-icons/io5";
 import { useState } from "react";
 import InputDefaultForm from "../components/InputDefaultForm/InputDefaultForm";
 
@@ -75,24 +75,35 @@ export default function ComplementaryStep({ biddingData, setBiddingData }) {
                         ? "purple"
                         : tag === "Alta Prioridade"
                         ? "red"
-                        : "green.500"
+                        : "green"
                     }
                     px={3}
                     py={1}
-                    fontSize="sm"
+                    fontSize="xs"
                     fontWeight="medium"
                   >
                     {tag}
-                    <IconButton
-                      icon={<IoCloseCircle />}
-                      size="sm"
+                    <Button size="4xs" onClick={() => handleRemoveTag(tag)}>
+                      <Text fontSize={"xx-small"}>
+                        <IoCloseOutline />
+                      </Text>
+                    </Button>
+                    {/* <IconButton
+                      icon={<IoCloseOutline />}
+                      size="2xs"
                       ml={2}
-                      variant="ghost"
-                      color={tag === "Acompanhamento" ? "purple.500" : tag === "Alta Prioridade" ? "red.500" : "green.500"}
+                      colorPalette={
+                        tag === "Acompanhamento"
+                          ? "purple.500"
+                          : tag === "Alta Prioridade"
+                          ? "red.500"
+                          : "green.500"
+                      }
+                      color="whiteAlpha.200"
                       _hover={{ bg: "rgba(255,255,255,0.2)" }}
                       onClick={() => handleRemoveTag(tag)}
                       aria-label={`Remover tag ${tag}`}
-                    />
+                    /> */}
                   </Badge>
                 </WrapItem>
               ))}

@@ -27,6 +27,15 @@ export default function IdentificationStep({ biddingData, setBiddingData }) {
     { label: "Inexigibilidade", value: "Inexigibilidade" },
   ];
 
+  const formatCNPJ = (cnpj) => {
+    const numbers = cnpj.replace(/\D/g, "");
+    if (numbers.length !== 14) return cnpj;
+    return `${numbers.slice(0, 2)}.${numbers.slice(2, 5)}.${numbers.slice(
+      5,
+      8
+    )}/${numbers.slice(8, 12)}-${numbers.slice(12, 14)}`;
+  };
+
   return (
     <Flex direction="column" w="100%" align="center" gap={6}>
       <Text
@@ -40,9 +49,7 @@ export default function IdentificationStep({ biddingData, setBiddingData }) {
         Identificação
       </Text>
 
-      {/* 🏢 Grid para organização */}
       <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap={6} w="100%">
-        {/* 📝 Informações do Órgão */}
         <GridItem>
           <Text fontSize="lg" fontWeight="semibold" color="gray.700" mb={3}>
             Órgão Responsável
@@ -60,6 +67,38 @@ export default function IdentificationStep({ biddingData, setBiddingData }) {
               }
             />
             <InputDefaultForm
+              legend={"Cidade do Órgão*"}
+              placeholder={"Informe a cidade do Órgão responsável"}
+              inputValue={biddingData.agencyCity}
+              onChange={(e) =>
+                setBiddingData({
+                  ...biddingData,
+                  agencyCity: e.target.value,
+                })
+              }
+            />
+            <InputDefaultForm
+              legend={"CNPJ do Órgão*"}
+              placeholder={"Informe o CNPJ do Órgão responsável"}
+              maxLength={"14"}
+              inputValue={biddingData.agencyCnpj}
+              onChange={(e) =>
+                setBiddingData({
+                  ...biddingData,
+                  agencyCnpj: e.target.value,
+                })
+              }
+              onBlur={(e) => {
+                if (biddingData.agencyCnpj.length === 14) {
+                  const formatted = formatCNPJ(biddingData.agencyCnpj);
+                  setBiddingData({
+                    ...biddingData,
+                    agencyCnpj: formatted,
+                  });
+                }
+              }}
+            />
+            <InputDefaultForm
               legend={"Código do Órgão"}
               placeholder={"Código do Órgão no portal"}
               inputValue={biddingData.portalAgencyCode}
@@ -73,7 +112,6 @@ export default function IdentificationStep({ biddingData, setBiddingData }) {
           </Flex>
         </GridItem>
 
-        {/* 🔢 Números de Identificação */}
         <GridItem>
           <Text fontSize="lg" fontWeight="semibold" color="gray.700" mb={3}>
             Identificação
@@ -104,7 +142,6 @@ export default function IdentificationStep({ biddingData, setBiddingData }) {
           </Flex>
         </GridItem>
 
-        {/* ⚖️ Configurações da Licitação */}
         <GridItem colSpan={{ base: 1, md: 2 }}>
           <Text fontSize="lg" fontWeight="semibold" color="gray.700" mb={3}>
             Configurações da Licitação

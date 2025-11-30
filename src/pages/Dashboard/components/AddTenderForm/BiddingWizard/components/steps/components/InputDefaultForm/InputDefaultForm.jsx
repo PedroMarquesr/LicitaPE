@@ -8,6 +8,8 @@ export default function InputDefaultForm({
   placeholder,
   legend,
   typeInput,
+  maxLength,
+  onBlur,
 }) {
   return (
     <Fieldset.Root>
@@ -15,12 +17,14 @@ export default function InputDefaultForm({
         <Fieldset.Legend fontWeight={"semibold"}>{legend} </Fieldset.Legend>
         <Input
           type={typeInput}
+          maxLength={maxLength}
           value={inputValue}
           borderColor="gray.300"
           _hover={{ borderColor: "gray.500" }}
           _focus={{ borderColor: "primary.500", boxShadow: "outline" }}
           onChange={onChange}
           placeholder={placeholder}
+          onBlur={onBlur}
         />
       </Flex>
     </Fieldset.Root>

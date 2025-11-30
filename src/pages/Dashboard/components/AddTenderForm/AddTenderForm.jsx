@@ -10,6 +10,9 @@ export default function AddTenderFormFixed() {
   const [biddingData, setBiddingData] = useState({
     responsibleAgency: "",
     portalAgencyCode: "",
+    agencyCity: "",
+    agencyCnpj: "",
+
     biddingObject: "",
     identificationNumber: "",
     processNumber: "",
@@ -38,6 +41,8 @@ export default function AddTenderFormFixed() {
     estimatedValue: "",
     maximumValue: "",
     observations: "",
+
+    result: "",
   });
   return (
     <Flex
