@@ -60,6 +60,7 @@ export default function AddTenderFormFixed() {
       });
 
       console.log("Licitação salva com sucesso!");
+      window.location.reload();
     } catch (error) {
       console.error("Erro ao salvar:", error);
     }
