@@ -3,6 +3,7 @@
 import {
   Flex,
   Text,
+  Badge,
   Grid,
   GridItem,
   Tag,
@@ -43,13 +44,7 @@ export default function ComplementaryStep({ biddingData, setBiddingData }) {
     }
   };
 
-  const predefinedTags = [
-    "Fabricante",
-    "Urgente",
-    "Importante",
-    "Alta Prioridade",
-    "Novo",
-  ];
+  const predefinedTags = ["Acompanhamento", "Alta Prioridade"];
 
   return (
     <Flex direction="column" w="100%" align="center" gap={6}>
@@ -64,61 +59,51 @@ export default function ComplementaryStep({ biddingData, setBiddingData }) {
         Informações Complementares
       </Text>
 
-      {/* 📋 Grid para organização */}
       <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap={6} w="100%">
-        {/* 🏷️ Sistema de Tags */}
         <GridItem colSpan={{ base: 1, md: 2 }}>
           <Text fontSize="lg" fontWeight="semibold" color="gray.700" mb={3}>
             Tags de Destaque
           </Text>
           <Flex gap={3} direction="column">
-            {/* Tags existentes */}
             <Wrap spacing={2} mb={3}>
               {biddingData.tags?.map((tag, index) => (
                 <WrapItem key={index}>
-                  <Flex
+                  <Badge
                     align="center"
-                    bg={
-                      tag === "Urgente"
-                        ? "red.500"
-                        : tag === "Importante"
-                        ? "orange.500"
-                        : tag === "Fabricante"
-                        ? "blue.500"
+                    colorPalette={
+                      tag === "Acompanhamento"
+                        ? "purple"
                         : tag === "Alta Prioridade"
-                        ? "purple.500"
+                        ? "red"
                         : "green.500"
                     }
-                    color="white"
                     px={3}
                     py={1}
-                    borderRadius="full"
                     fontSize="sm"
                     fontWeight="medium"
                   >
                     {tag}
                     <IconButton
                       icon={<IoCloseCircle />}
-                      size="xs"
+                      size="sm"
                       ml={2}
                       variant="ghost"
-                      color="white"
+                      color={tag === "Acompanhamento" ? "purple.500" : tag === "Alta Prioridade" ? "red.500" : "green.500"}
                       _hover={{ bg: "rgba(255,255,255,0.2)" }}
                       onClick={() => handleRemoveTag(tag)}
                       aria-label={`Remover tag ${tag}`}
                     />
-                  </Flex>
+                  </Badge>
                 </WrapItem>
               ))}
             </Wrap>
 
-            {/* Adicionar nova tag */}
             <Flex gap={2} align="center">
               <Input
                 placeholder="Digite uma tag ou selecione abaixo"
                 value={newTag}
                 onChange={(e) => setNewTag(e.target.value)}
-                onKeyPress={handleKeyPress}
+                onKeyUp={handleKeyPress}
                 flex={1}
               />
               <Button onClick={handleAddTag} colorScheme="blue" size="sm">
@@ -126,7 +111,6 @@ export default function ComplementaryStep({ biddingData, setBiddingData }) {
               </Button>
             </Flex>
 
-            {/* Tags pré-definidas */}
             <Text fontSize="sm" color="gray.600" mt={2}>
               Tags sugeridas:
             </Text>
