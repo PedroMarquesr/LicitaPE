@@ -78,6 +78,7 @@ export default function AddTenderFormFixed() {
       <HeaderPage
         titleHeader={"Nova Licitação"}
         subTitleHeader={"Preencha os dados para cadastrar uma nova licitação"}
+        backVisible={true}
       />
 
       <Flex w="100%" justify="center">

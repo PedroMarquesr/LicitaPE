@@ -3,11 +3,16 @@ import { Flex, Text, Button } from "@chakra-ui/react";
 import { FaChevronLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-export default function HeaderPage({ titleHeader, subTitleHeader }) {
+export default function HeaderPage({
+  titleHeader,
+  subTitleHeader,
+  backVisible,
+}) {
   return (
     <Flex pl={{ base: "0", md: "5%" }} w={"100%"}>
       <Flex align={"center"}>
         <Button
+          display={backVisible ? "flex" : "none"}
           mr={"5"}
           bgColor="gray.50"
           color="gray.600"
