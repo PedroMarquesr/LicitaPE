@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Flex,
@@ -10,20 +10,21 @@ import {
   CloseButton,
   Separator,
   VStack,
-} from "@chakra-ui/react"
-import { useState } from "react"
-import { Link as RouterLink } from "react-router-dom"
+} from "@chakra-ui/react";
+import { useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
 
-import { useLocation } from "react-router-dom"
+import useStore from "@/components/globalStates/store";
 
-import { MdDashboard } from "react-icons/md"
-import { FaPlus } from "react-icons/fa"
-import { ImMenu } from "react-icons/im"
+import { MdDashboard } from "react-icons/md";
+import { FaPlus } from "react-icons/fa";
+import { ImMenu } from "react-icons/im";
+import { IoLogOutSharp } from "react-icons/io5";
 
 export default function MenuDashboardMb() {
-  const location = useLocation()
+  const { signOutUser } = useStore();
 
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = [
     {
@@ -36,7 +37,7 @@ export default function MenuDashboardMb() {
       label: "Cadastro de licitação",
       link: "/dashboard/AddTenderForm",
     },
-  ]
+  ];
 
   return (
     <>
@@ -95,6 +96,18 @@ export default function MenuDashboardMb() {
                       </RouterLink>
                     ))}
                     <Separator />
+                    <Flex align={"center"}>
+                      <Button
+                        onClick={signOutUser}
+                        variant="ghost"
+                        colorScheme="red"
+                      >
+                        <Icon as={IoLogOutSharp} boxSize="5" mr="3" />
+
+                        <Text>Sair</Text>
+                      </Button>
+                      <Separator />
+                    </Flex>
                   </VStack>
                 </Drawer.Body>
                 <Drawer.CloseTrigger asChild>
@@ -113,5 +126,5 @@ export default function MenuDashboardMb() {
         </Drawer.Root>
       </Flex>
     </>
-  )
+  );
 }

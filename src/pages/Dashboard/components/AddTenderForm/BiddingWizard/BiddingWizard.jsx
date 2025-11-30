@@ -1,17 +1,21 @@
-"use client"
+"use client";
 
-import { Flex, Text } from "@chakra-ui/react"
-import MenuForm from "./components/MenuForm/MenuForm"
-import IdentificationStep from "./components/steps/IdentificationStep/IdentificationStep"
-import { useState } from "react"
+import { Flex, Text } from "@chakra-ui/react";
+import MenuForm from "./components/MenuForm/MenuForm";
+
+import IdentificationStep from "./components/steps/IdentificationStep/IdentificationStep";
+import DatesStep from "./components/steps/DatesStep/DatesStep";
+import LocalStep from "./components/steps/LocalStep/LocalStep";
+
+import { useState } from "react";
 
 export default function BiddingWizard({ biddingData, setBiddingData }) {
-  const [activeStep, setActiveStep] = useState(1)
+  const [activeStep, setActiveStep] = useState(1);
 
   const handleStepChange = (stepId) => {
-    console.log("Mudando para step:", stepId)
-    setActiveStep(stepId)
-  }
+    console.log("Mudando para step:", stepId);
+    setActiveStep(stepId);
+  };
 
   const renderStepContent = () => {
     switch (activeStep) {
@@ -23,19 +27,29 @@ export default function BiddingWizard({ biddingData, setBiddingData }) {
               setBiddingData={setBiddingData}
             />
           </>
-        )
+        );
       case 2:
-        return <Text>Step 2</Text>
+        return (
+          <DatesStep
+            biddingData={biddingData}
+            setBiddingData={setBiddingData}
+          />
+        );
       case 3:
-        return <Text>Step 3</Text>
+        return (
+          <LocalStep
+            biddingData={biddingData}
+            setBiddingData={setBiddingData}
+          />
+        );
       case 4:
-        return <Text>Step 4</Text>
+        return <Text>Step 4</Text>;
       case 5:
-        return <Text>Step 5</Text>
+        return <Text>Step 5</Text>;
       default:
-        return <IdentificationStep />
+        return <IdentificationStep />;
     }
-  }
+  };
 
   return (
     <Flex
@@ -59,5 +73,5 @@ export default function BiddingWizard({ biddingData, setBiddingData }) {
         {renderStepContent()}
       </Flex>
     </Flex>
-  )
+  );
 }

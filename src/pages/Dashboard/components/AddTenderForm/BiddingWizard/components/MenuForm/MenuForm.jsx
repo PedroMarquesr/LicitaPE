@@ -1,14 +1,12 @@
-"use client"
+"use client";
 
-import { Flex, Button, Text, Icon } from "@chakra-ui/react"
+import { Flex, Button, Text, Icon } from "@chakra-ui/react";
 
-import { GrCircleInformation } from "react-icons/gr"
-import { CiCalendarDate, CiCirclePlus } from "react-icons/ci"
-import { ImHammer2 } from "react-icons/im"
-import { RiGlobalFill } from "react-icons/ri"
-import { IoDocumentTextOutline } from "react-icons/io5"
-
-import { useState } from "react"
+import { GrCircleInformation } from "react-icons/gr";
+import { CiCalendarDate, CiCirclePlus } from "react-icons/ci";
+import { ImHammer2 } from "react-icons/im";
+import { RiGlobalFill } from "react-icons/ri";
+import { IoDocumentTextOutline } from "react-icons/io5";
 
 export default function MenuForm({ activeStep, onStepChange }) {
   const steps = [
@@ -17,12 +15,12 @@ export default function MenuForm({ activeStep, onStepChange }) {
     { id: 3, title: "Local e Plataforma", icon: RiGlobalFill },
     { id: 4, title: "Documentação", icon: IoDocumentTextOutline },
     { id: 5, title: "Complementar", icon: CiCirclePlus },
-  ]
+  ];
 
   const handleStepClick = (stepId) => {
-    console.log("Clicou no step:", stepId)
-    onStepChange(stepId)
-  }
+    console.log("Clicou no step:", stepId);
+    onStepChange(stepId);
+  };
 
   return (
     <>
@@ -91,5 +89,5 @@ export default function MenuForm({ activeStep, onStepChange }) {
         </Flex>
       </Flex>
     </>
-  )
+  );
 }
