@@ -88,7 +88,7 @@ export default function IdentificationStep({ biddingData, setBiddingData }) {
                   agencyCnpj: e.target.value,
                 })
               }
-              onBlur={(e) => {
+              onBlur={() => {
                 if (biddingData.agencyCnpj.length === 14) {
                   const formatted = formatCNPJ(biddingData.agencyCnpj);
                   setBiddingData({
